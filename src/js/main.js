@@ -1,2 +1,2 @@
-import {base} from './base/_index';
-base();
+// import {base} from './base/_index';
+// base();

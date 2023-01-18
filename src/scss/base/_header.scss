@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 67px;
+  height: 64px;
+  margin: 40px 10px 40px 31px;
+}
+
+.logo h1 {
+  font-family: "Marck Script";
+  font-size: 42px;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  width: 60%;
+
+  .menu {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0;
+    list-style-type: none;
+
+    a {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    a:link {
+      color: #f14736;
+    }
+  }
+}

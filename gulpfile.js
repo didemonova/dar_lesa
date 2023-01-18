@@ -105,15 +105,28 @@ const buildJs = () => {
 };
 
 const buildFonts = () => {
-  return gulp.src([`${DIR_SRC}/**/*.{woff, woff2}`])
+  return gulp.src([`${DIR_SRC}/**/*.{woff,woff2}`])
     .pipe(gulp.dest(DIR_DESTINATION))
     .pipe(browserSync.stream());
 };
 
 const buildImages = () => {
-  return gulp.src([`${DIR_SRC}/**/*.{ png, jpg, gif, ico, svg, webp }`])
+  return gulp.src([`${DIR_SRC}/**/*.{png,jpg,gif,ico,svg,webp}`])
     .pipe(gulp.dest(DIR_DESTINATION))
     .pipe(browserSync.stream());
+};
+
+const buildAssets = () => {
+  let stream = require('merge-stream')();
+
+  // jQuery
+  stream.add((function () {
+    return gulp
+      .src(['node_modules/jquery/dist/jquery.min.js'])
+      .pipe(gulp.dest( path.resolve(DIR_DESTINATION, 'js')));
+  })());
+
+  return stream.isEmpty() ? null : stream;
 };
 
 const buildPug = () => {
@@ -133,6 +146,7 @@ exports.default = gulp.series(
     buildCss,
     buildJs,
     buildImages,
+    buildAssets,
     buildPug,
     buildFonts
   ),
@@ -145,6 +159,7 @@ exports.start = gulp.parallel(
       buildCss,
       buildJs,
       buildImages,
+      buildAssets,
       buildPug,
       buildFonts
     ),
